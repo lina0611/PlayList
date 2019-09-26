@@ -45,7 +45,12 @@ class MediaItemCell: UICollectionViewCell {
         return label
     }()
 
-    func setupViews() {
+    func configure(with media: Media) {
+        albumNameLabel.text = media.albumName
+        imageView.image = media.image
+    }
+
+    private func setupViews() {
         addSubview(imageView)
         addSubview(albumNameLabel)
         addSubview(mediaTypeLabel)

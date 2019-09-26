@@ -10,6 +10,14 @@ import UIKit
 
 class CategoryCell: UICollectionViewCell {
 
+    var mediaCategory: MediaCategory? {
+        didSet {
+            if let mediaTypeName = mediaCategory?.mediaType.rawValue {
+                mediaTypeLabel.text = mediaTypeName
+            }
+        }
+    }
+
     private let cellIdentifier = "MediaItemCell"
 
     override init(frame: CGRect) {

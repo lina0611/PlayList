@@ -16,6 +16,9 @@ class PlayListCollectionViewController: UICollectionViewController, UICollection
         static let largeTitle = "PlayList"
     }
 
+    private var dataManager = DataManager()
+    private var medias = [MediaCategory]()
+
     /// Setup large navigation title
     private func configureNavigationBar() {
         navigationItem.title = Constants.largeTitle
@@ -27,12 +30,16 @@ class PlayListCollectionViewController: UICollectionViewController, UICollection
 
         configureNavigationBar()
         collectionView.backgroundColor = UIColor.white
-
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
+
+        dataManager.fetchAll { mediaList in
+            <#code#>
+        }
+
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
