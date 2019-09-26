@@ -17,7 +17,10 @@ class PlayListCollectionViewController: UICollectionViewController, UICollection
     }
 
     private var dataManager = DataManager()
+    private var progressHUD = ProgressHUD()
     private var medias = [MediaCategory]()
+
+    // MARK: - Init -
 
     /// Setup large navigation title
     private func configureNavigationBar() {
@@ -25,26 +28,43 @@ class PlayListCollectionViewController: UICollectionViewController, UICollection
         navigationController?.navigationBar.prefersLargeTitles = true
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        configureNavigationBar()
+    private func configureCollectionView() {
         collectionView.backgroundColor = UIColor.white
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
+    }
+
+    private func showIndicator() {
+        view.addSubview(progressHUD)
+    }
+
+    private func hideIndicator() {
+        progressHUD.removeFromSuperview()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        configureNavigationBar()
+        configureCollectionView()
+        showIndicator()
         fetchData()
     }
+
+    // MARK: - Fetch data -
 
     private func fetchData() {
         dataManager.fetchAll { [weak self] mediaList in
             guard let self = self else { return }
-                if let mediaList = mediaList {
-                    self.medias = mediaList
-                }
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
+            if let mediaList = mediaList {
+                self.hideIndicator()
+                self.medias = mediaList
             }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
+
+    // MARK: - CollectionView -
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return medias.count

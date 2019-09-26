@@ -10,23 +10,14 @@ import UIKit
 
 class CategoryCell: UICollectionViewCell {
 
+    // MARK: - Public Property -
+
     var mediaCategory: MediaCategory? {
         didSet {
             if let mediaCategory = mediaCategory {
                 mediaTypeLabel.text = mediaCategory.mediaType.rawValue
             }
         }
-    }
-
-    private let cellIdentifier = "MediaItemCell"
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 
     let mediaTypeLabel: UILabel = {
@@ -54,6 +45,23 @@ class CategoryCell: UICollectionViewCell {
         return dividerLineView
     }()
 
+    // MARK: - Private Property -
+
+    private let cellIdentifier = "MediaItemCell"
+
+    // MARK: - Init -
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Setup Views -
+
     private func setupViews() {
         backgroundColor = UIColor.clear
 
@@ -66,6 +74,7 @@ class CategoryCell: UICollectionViewCell {
 
         mediaItemscollectionView.register(MediaItemCell.self, forCellWithReuseIdentifier: cellIdentifier)
 
+        // Setup LayoutConstraint
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": mediaTypeLabel]))
 
         NSLayoutConstraint.activate(NSLayoutConstraint.constraints(withVisualFormat: "H:|-14-[v0]|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: ["v0": dividerLineView]))

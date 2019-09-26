@@ -10,15 +10,6 @@ import UIKit
 
 class MediaItemCell: UICollectionViewCell {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.backgroundColor = UIColor.yellow
@@ -41,6 +32,15 @@ class MediaItemCell: UICollectionViewCell {
         label.textColor = UIColor.darkGray
         return label
     }()
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     func configure(with media: Media, mediaType: MediaType) {
         albumNameLabel.text = media.albumName

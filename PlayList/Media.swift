@@ -11,16 +11,13 @@ import UIKit
 
 class Media {
 
-    private enum Constants {
-        static let artistNameKey = "artistName"
-        static let albumNameKey = "name"
-    }
+    static let albumNameKey = "name"
 
     var albumName: String
     var image: UIImage?
     var mediaType: MediaType?
 
     init(with mediaDic: [String: Any]) {
-        albumName = mediaDic[Constants.albumNameKey] as? String ?? ""
+        albumName = mediaDic[Media.albumNameKey] as? String ?? ""
     }
 }

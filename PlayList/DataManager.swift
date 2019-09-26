@@ -19,6 +19,9 @@ class DataManager {
         static let artworkUrlKey = "artworkUrl100"
     }
 
+    /// Load All medias data from server
+    ///
+    /// - Parameter completionBlock: return an array of MediaCategory
     func fetchAll(completion: @escaping (_ medias: [MediaCategory]?) -> Void) {
         var mediaCollector = [MediaCategory]()
         loadMusics { [weak self] musics in
@@ -34,7 +37,6 @@ class DataManager {
             }
         }
     }
-
 
     /// Load Movies from server
     ///
