@@ -12,8 +12,8 @@ class CategoryCell: UICollectionViewCell {
 
     var mediaCategory: MediaCategory? {
         didSet {
-            if let mediaTypeName = mediaCategory?.mediaType.rawValue {
-                mediaTypeLabel.text = mediaTypeName
+            if let mediaCategory = mediaCategory {
+                mediaTypeLabel.text = mediaCategory.mediaType.rawValue
             }
         }
     }
@@ -31,7 +31,6 @@ class CategoryCell: UICollectionViewCell {
 
     let mediaTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Music"
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         label.textColor = UIColor.black
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -55,7 +54,7 @@ class CategoryCell: UICollectionViewCell {
         return dividerLineView
     }()
 
-    func setupViews() {
+    private func setupViews() {
         backgroundColor = UIColor.clear
 
         addSubview(mediaItemscollectionView)
@@ -80,11 +79,20 @@ class CategoryCell: UICollectionViewCell {
 extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        guard let mediaCategory = mediaCategory else {
+            return 0
+        }
+        return mediaCategory.mediaList.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)as? MediaItemCell else {
+            preconditionFailure("Failed to deque MediaItemCell")
+        }
+        if let mediaCategory = mediaCategory {
+            cell.configure(with: mediaCategory.mediaList[indexPath.row], mediaType: mediaCategory.mediaType)
+        }
+        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

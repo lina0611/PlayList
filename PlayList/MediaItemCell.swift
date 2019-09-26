@@ -25,13 +25,11 @@ class MediaItemCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.cornerRadius = 16
         imageView.layer.masksToBounds = true
-
         return imageView
     }()
 
     let albumNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Love you so much"
         label.font = UIFont.systemFont(ofSize: 14)
         label.numberOfLines = 2
         return label
@@ -39,15 +37,15 @@ class MediaItemCell: UICollectionViewCell {
 
     let mediaTypeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Music"
         label.font = UIFont.systemFont(ofSize: 13)
         label.textColor = UIColor.darkGray
         return label
     }()
 
-    func configure(with media: Media) {
+    func configure(with media: Media, mediaType: MediaType) {
         albumNameLabel.text = media.albumName
         imageView.image = media.image
+        mediaTypeLabel.text = mediaType.rawValue
     }
 
     private func setupViews() {

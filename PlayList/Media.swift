@@ -18,6 +18,7 @@ class Media {
 
     var albumName: String
     var image: UIImage?
+    var mediaType: MediaType?
 
     init(with mediaDic: [String: Any]) {
         albumName = mediaDic[Constants.albumNameKey] as? String ?? ""

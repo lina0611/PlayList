@@ -21,18 +21,18 @@ class DataManager {
 
     func fetchAll(completion: @escaping (_ medias: [MediaCategory]?) -> Void) {
         var mediaCollector = [MediaCategory]()
-        loadMusics { musics in
+        loadMusics { [weak self] musics in
+            guard let self = self else { return }
             if let musics = musics {
                 mediaCollector.append(MediaCategory(mediaType: .music, mediaList: musics))
             }
-        }
-
-        loadMovies { movies in
-            if let movies = movies {
-                mediaCollector.append(MediaCategory(mediaType: .movie, mediaList: movies))
+            self.loadMovies { movies in
+                if let movies = movies {
+                    mediaCollector.append(MediaCategory(mediaType: .movie, mediaList: movies))
+                }
+                completion(mediaCollector)
             }
         }
-        completion(mediaCollector)
     }
 
 

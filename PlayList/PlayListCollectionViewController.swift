@@ -31,21 +31,31 @@ class PlayListCollectionViewController: UICollectionViewController, UICollection
         configureNavigationBar()
         collectionView.backgroundColor = UIColor.white
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
+        fetchData()
+    }
 
-        dataManager.fetchAll { mediaList in
-            <#code#>
-        }
-
+    private func fetchData() {
+        dataManager.fetchAll { [weak self] mediaList in
+            guard let self = self else { return }
+                if let mediaList = mediaList {
+                    self.medias = mediaList
+                }
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            }
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return medias.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellIdentifier, for: indexPath) as? CategoryCell else {
             preconditionFailure(Constants.failToGetCell)
         }
+
+        cell.mediaCategory = medias[indexPath.row]
         return cell
     }
 
