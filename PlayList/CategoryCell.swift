@@ -31,6 +31,7 @@ class CategoryCell: UICollectionViewCell {
         return collectionView
     }()
 
+
     func setupViews() {
         backgroundColor = UIColor.clear
 
@@ -57,7 +58,7 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate, UI
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 80, height: frame.height)
+        return CGSize(width: 100, height: frame.height)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
