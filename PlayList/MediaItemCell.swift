@@ -19,7 +19,19 @@ class MediaItemCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.backgroundColor = UIColor.yellow
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = 16
+        imageView.layer.masksToBounds = true
+
+        return imageView
+    }()
+
+
     func setupViews() {
-        backgroundColor = UIColor.red
+        addSubview(imageView)
+        imageView.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.width)
     }
 }

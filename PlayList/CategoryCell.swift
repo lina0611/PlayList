@@ -23,14 +23,16 @@ class CategoryCell: UICollectionViewCell {
 
     let mediaItemscollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
         let collectionView = UICollectionView.init(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = UIColor.blue
+        collectionView.backgroundColor = UIColor.clear
+        collectionView.showsHorizontalScrollIndicator = false
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
 
     func setupViews() {
-        backgroundColor = UIColor.black
+        backgroundColor = UIColor.clear
 
         addSubview(mediaItemscollectionView)
 
@@ -52,5 +54,13 @@ extension CategoryCell: UICollectionViewDataSource, UICollectionViewDelegate, UI
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         return collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 80, height: frame.height)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
     }
 }
