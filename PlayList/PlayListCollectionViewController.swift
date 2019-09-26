@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PlayListCollectionViewController: UICollectionViewController {
+class PlayListCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
     private enum Constants {
         static let cellIdentifier = "CategoryCell"
@@ -31,6 +31,10 @@ class PlayListCollectionViewController: UICollectionViewController {
             preconditionFailure(Constants.failToGetCell)
         }
         return cell
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: view.frame.width, height: 100)
     }
 }
 
