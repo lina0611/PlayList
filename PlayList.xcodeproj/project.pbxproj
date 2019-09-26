@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3E260A5C233D138600CF0ADC /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E260A5B233D138600CF0ADC /* CategoryCell.swift */; };
+		3E260A5E233D21EC00CF0ADC /* MediaItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E260A5D233D21EC00CF0ADC /* MediaItemCell.swift */; };
 		3E5D408C233D03450007991E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D408B233D03450007991E /* AppDelegate.swift */; };
 		3E5D408E233D03450007991E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D408D233D03450007991E /* SceneDelegate.swift */; };
 		3E5D4090233D03450007991E /* PlayListCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5D408F233D03450007991E /* PlayListCollectionViewController.swift */; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		3E260A5B233D138600CF0ADC /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		3E260A5D233D21EC00CF0ADC /* MediaItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemCell.swift; sourceTree = "<group>"; };
 		3E5D4088233D03450007991E /* PlayList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlayList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E5D408B233D03450007991E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E5D408D233D03450007991E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				3E5D408D233D03450007991E /* SceneDelegate.swift */,
 				3E5D408F233D03450007991E /* PlayListCollectionViewController.swift */,
 				3E260A5B233D138600CF0ADC /* CategoryCell.swift */,
+				3E260A5D233D21EC00CF0ADC /* MediaItemCell.swift */,
 				3E5D4094233D03470007991E /* Assets.xcassets */,
 				3E5D4096233D03470007991E /* LaunchScreen.storyboard */,
 				3E5D4099233D03470007991E /* Info.plist */,
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E260A5E233D21EC00CF0ADC /* MediaItemCell.swift in Sources */,
 				3E5D4090233D03450007991E /* PlayListCollectionViewController.swift in Sources */,
 				3E5D408C233D03450007991E /* AppDelegate.swift in Sources */,
 				3E5D408E233D03450007991E /* SceneDelegate.swift in Sources */,
