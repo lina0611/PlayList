@@ -21,7 +21,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let layout = UICollectionViewFlowLayout()
         let collectionViewcontroller = PlayListCollectionViewController(collectionViewLayout: layout)
-        window?.rootViewController = collectionViewcontroller
+        let navigationController = UINavigationController(rootViewController: collectionViewcontroller)
+        window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
 

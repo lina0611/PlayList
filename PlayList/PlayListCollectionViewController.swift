@@ -13,10 +13,19 @@ class PlayListCollectionViewController: UICollectionViewController, UICollection
     private enum Constants {
         static let cellIdentifier = "CategoryCell"
         static let failToGetCell = "Failed to dequeue CategoryCell"
+        static let largeTitle = "PlayList"
+    }
+
+    /// Setup large navigation title
+    private func configureNavigationBar() {
+        navigationItem.title = Constants.largeTitle
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        configureNavigationBar()
         collectionView.backgroundColor = UIColor.white
 
         collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: Constants.cellIdentifier)
